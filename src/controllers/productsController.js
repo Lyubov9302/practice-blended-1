@@ -55,7 +55,7 @@ export const deleteProduct = async (req, res, next) => {
   });
 
   if (!product) {
-    next(createHttpError(404, 'Product not found'));
+    throw createHttpError(404, "Product not found");
   }
 
   res.status(200).json(product);
