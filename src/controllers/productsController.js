@@ -14,7 +14,7 @@ export const getProductById = async (req, res, next) => {
   const product = await Product.findById(productId);
 
   if(!product) {
-    next(createHttpError(404, 'Note not found'));
+    next(createHttpError(404, 'Product not found'));
     return;
   }
 
@@ -55,7 +55,7 @@ export const deleteProduct = async (req, res, next) => {
   });
 
   if (!product) {
-    throw createHttpError(404, "Product not found");
+    next(createHttpError(404, 'Product not found'));
   }
 
   res.status(200).json(product);
